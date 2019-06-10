@@ -1,25 +1,33 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {inject, TestBed} from '@angular/core/testing';
+import {DynamicPageComponent} from './dynamic-page.component';
+import {DynamicPageService} from '../../services/dynamic-page.service';
+import {Observable, of} from 'rxjs';
+import {AngularFireDatabase} from 'angularfire2/database';
+import {testingItems} from '../../../environments/environments.test.variales';
 
-import { DynamicPageComponent } from './dynamic-page.component';
+const mockItems$ = of(testingItems);
+const angularFireDatabaseStub = {
+  list: () => {
+    return new Observable();
+  }
+};
 
 describe('DynamicPageComponent', () => {
-  let component: DynamicPageComponent;
-  let fixture: ComponentFixture<DynamicPageComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ DynamicPageComponent ]
-    })
-    .compileComponents();
-  }));
-
   beforeEach(() => {
-    fixture = TestBed.createComponent(DynamicPageComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    spyOn(angularFireDatabaseStub, 'list').and.returnValue(mockItems$);
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+    TestBed.configureTestingModule({
+      providers: [
+        DynamicPageService,
+        {provide: AngularFireDatabase, useValue: angularFireDatabaseStub},
+      ]
+    });
   });
+  it('should get all items service', inject([DynamicPageService], (service: DynamicPageService) => {
+    of(service.getQuote())
+      .subscribe(item => {
+        console.log(item);
+        expect(item[0].titles).toBeNaN();
+      });
+  }));
 });

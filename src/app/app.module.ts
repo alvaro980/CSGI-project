@@ -14,7 +14,7 @@ import {environment} from '../environments/environment';
 import {DynamicPageComponent} from './components/dynamic-page/dynamic-page.component';
 //  services
 import {DynamicPageService} from './services/dynamic-page.service';
-//  fontAwesome libraries
+//  fontawesome libraries
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {fas} from '@fortawesome/free-solid-svg-icons';

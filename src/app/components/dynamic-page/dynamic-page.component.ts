@@ -7,9 +7,9 @@ import {DynamicPageService} from '../../services/dynamic-page.service';
   styleUrls: ['./dynamic-page.component.scss']
 })
 export class DynamicPageComponent implements OnInit {
-  quoteList: any[];
+  itemList: any[];
   interval: any;
-  list: string;
+  item: string;
   currentQuote: number;
 
   constructor(private dynamicPageService: DynamicPageService) {
@@ -22,18 +22,14 @@ export class DynamicPageComponent implements OnInit {
 
   loadQuote() {
     this.currentQuote = 0;
-    this.quoteList = [];
+    this.itemList = [];
     this.dynamicPageService.getQuote().snapshotChanges()
       .subscribe(item => {
-        this.quoteList = [];
+        this.itemList = [];
         item.forEach(element => {
           const x = element.payload.toJSON();
           x['$key'] = element.key;
-          this.quoteList.push(x);
-        });
-
-        this.quoteList.sort((a, b) => {
-          return a.isChecked - b.isChecked;
+          this.itemList.push(x);
         });
       });
   }
@@ -41,15 +37,15 @@ export class DynamicPageComponent implements OnInit {
   getAds() {
     this.interval = setInterval(() => {
       this.trackQuote();
-    }, 5000);
+    }, 8000);
   }
 
   trackQuote() {
-    if (this.currentQuote + 1 > this.quoteList.length - 1) {
+    if (this.currentQuote + 1 > this.itemList.length - 1) {
       this.loadQuote();
     } else {
       this.currentQuote = this.currentQuote + 1;
-      this.list = this.quoteList[this.currentQuote].title;
+      this.item = this.itemList[this.currentQuote].title;
     }
   }
 }

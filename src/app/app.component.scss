@@ -1,6 +1,11 @@
 .container {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  min-height: 60em;
+  justify-content: center;
+}
+
+:host {
+  display: block;
+  border: 1px solid black;
 }

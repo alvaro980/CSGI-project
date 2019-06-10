@@ -6,7 +6,7 @@ import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
 })
 export class DynamicPageService {
 
-  quotaList: AngularFireList<any>;
+  private quotaList: AngularFireList<any>;
 
   constructor(private firebasedb: AngularFireDatabase) {
   }

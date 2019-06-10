@@ -1,7 +1,11 @@
+<div *ngIf="!quote" class="spinner-border" role="status">
+  <span class="sr-only">Loading...</span>
+</div>
 <div class="container">
-  <div class="card border-dark mb-3 center">
+  <div *ngIf="!!quote" class="card border-dark mb-3 center">
     <div class="card-body text-dark">
-      <h5 class="card-title">{{item}}</h5>
+      <h5 class="card-title">{{quote.quote}}</h5>
+      <h5 class="card-title">Author:{{quote.author}}</h5>
     </div>
   </div>
   <share-button button="facebook"></share-button>
@@ -11,3 +15,4 @@
   <share-button button="telegram"></share-button>
   <share-button button="email"></share-button>
 </div>
+

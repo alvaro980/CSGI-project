@@ -23,11 +23,10 @@ describe('DynamicPageComponent', () => {
       ]
     });
   });
-  it('should get all items service', inject([DynamicPageService], (service: DynamicPageService) => {
+  it('should match at least one quote', inject([DynamicPageService], (service: DynamicPageService) => {
     of(service.getQuote())
-      .subscribe(item => {
-        console.log(item);
-        expect(item[0].titles).toBeNaN();
+      .subscribe(quote => {
+        expect(quote).toEqual(jasmine.any(testingItems));
       });
   }));
 });

@@ -1,6 +1,4 @@
-export class Items {
-  constructor(
-    public titles: string,
-    public isChecked?: boolean) {
-  }
+ export interface Quote {
+  quote: string;
+  author: string;
 }

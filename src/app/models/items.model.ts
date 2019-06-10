@@ -1,6 +1,6 @@
 export class Items {
   constructor(
     public titles: string,
-    public isChecked: boolean) {
+    public isChecked?: boolean) {
   }
 }

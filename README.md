@@ -22,7 +22,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
   
 ## Firebase
 
-The project use [firebase2](https://github.com/angular/angularfire2) plugin in order to connect the application with the firebase database.
+The project uses [firebase2](https://github.com/angular/angularfire2) plugin in order to connect the application with the firebase database.
 
 ## Build
 

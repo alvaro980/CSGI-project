@@ -19,6 +19,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Available buttons
 
   `Facebook` `Twitter` `LinkedIn` `WhatsApp` `Telegram` `Email` 
+  
+## Firebase
+
+The project use [firebase2](https://github.com/angular/angularfire2) plugin in order to connect the application with the firebase database.
 
 ## Build
 
